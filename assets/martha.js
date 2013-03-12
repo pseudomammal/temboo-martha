@@ -65,7 +65,7 @@ $(function(){
 	function linkify(linkContainer) {
 		linkContainer = $(linkContainer);
 		var newHtml = linkContainer.html();
-		newHtml = newHtml.replace(/(http:\/\/bit.ly\/\w+|https:\/\/github.com\/temboo|https:\/\/temboo.com)/g, '<a href="$1" target="_blank">$1</a>');
+		newHtml = newHtml.replace(/(http:\/\/bit.ly\/\w+|https:\/\/github.com\/temboo|https:\/\/github.com\/pseudomammal\/temboo-martha|https:\/\/temboo.com)/g, '<a href="$1" target="_blank">$1</a>');
 		newHtml = newHtml.replace(/(^|\s+)@(\w+)/g, '$1<a href="http://twitter.com/$2" target="_blank">@$2</a>');
 		linkContainer.html(newHtml);
 		return linkContainer;
