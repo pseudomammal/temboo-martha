@@ -96,7 +96,7 @@ class Martha {
      * @param string $subject the thing to search for, e.g. "cats"
      * @param int $limit (optional) max number of results
      * @return string a url to a rendered list of results, or an error message on failure
-     * @throws Temboo_Exception should unforseen misfortunes befall us
+     * @throws Temboo_Exception should unforeseen misfortunes befall us
      */
     protected function searchImages($subject, $limit = false) {
         // Instantiate the Choreo, using a previously instantiated Temboo_Session object
@@ -133,7 +133,7 @@ class Martha {
      * @param string $subject the thing to search for, e.g. "cats"
      * @param int $limit (optional) max number of results
      * @return string a url to a rendered list of results, or an error message on failure
-     * @throws Temboo_Exception should unforseen misfortunes befall us
+     * @throws Temboo_Exception should unforeseen misfortunes befall us
      */
     protected function searchVideos($subject, $limit = false) {
         // Instantiate the Choreo, using a previously instantiated Temboo_Session object
@@ -167,7 +167,7 @@ class Martha {
      * @param string $subject the thing to search for, e.g. "cats"
      * @param int $limit (optional) max number of results
      * @return string a url to a rendered list of results, or an error message on failure
-     * @throws Temboo_Exception should unforseen misfortunes befall us
+     * @throws Temboo_Exception should unforeseen misfortunes befall us
      */
     protected function searchTweets($subject, $limit = false) {
         // Instantiate the Choreo, using a previously instantiated Temboo_Session object
@@ -369,6 +369,7 @@ class Martha {
         return $url;
     }
 
+
     /**
      * Send an SMS text message.
      *
@@ -377,7 +378,7 @@ class Martha {
      *
      * @param string $to a phone number to text
      * @param string $message the message to send
-     * @throws Temboo_Exception should unforseen misfortunes befall us
+     * @throws Temboo_Exception should unforeseen misfortunes befall us
      */
     public function sendSMS($to, $message) {
         // Instantiate the Choreo, using a previously instantiated Temboo_Session object
@@ -502,7 +503,7 @@ class Martha {
         // Check for a request to limit the number of results.
         $limit = false;
 
-        // A nice simpler numeric quantity would be nice. Fortunately Twilio transcription does this!
+        // A nice simple numeric quantity would be good. Fortunately Twilio transcription does this!
         if(preg_match('/^(?P<limit>[0-9]+) (?P<query>.+)$/i', $query, $matches)) {
             $query = $matches['query'];
             $limit = (int) $matches['limit'];
@@ -525,7 +526,7 @@ class Martha {
         }
 
         // Laziness, Impatience and Hubris.
-        $resourceTypeRegex = implode('|',call_user_func_array('array_merge', $this->_resourceTypes));
+        $resourceTypeRegex = implode('|', call_user_func_array('array_merge', $this->_resourceTypes));
 
         // Check for queries in form "<resource type> of/about/with <subject>", e.g. "pictures of cats".
         // or "<subject> <resource type>", e.g. "cat pictures".
@@ -619,6 +620,7 @@ class Martha {
         );
     }
 
+
     /**
      * A random empty result report.
      *
@@ -632,6 +634,7 @@ class Martha {
             'Alas, I failed to bring you your'
         );
     }
+
 
     /**
      * A random error report.
@@ -662,7 +665,8 @@ class Martha {
             "I'm sorry, Dave. I can do that, but I just don't want to.",
             'Yeah, sorry. No.',
             'Nope. Better luck next time!',
-            'Huh?'
+            'Huh?',
+            'Try asking for "help" or "what can you do?"'
         );
     }
 
