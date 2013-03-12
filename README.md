@@ -17,10 +17,13 @@ In fact, you can generate most of the code necessary live in the [Temboo library
 ###Quickstart
  1. Sign up for a free account at www.temboo.com
  2. Clone the repo: `git clone git@github.com:pseudomammal/temboo-martha.git`
- 3. Copy `config.php.template` to `config.php` and edit with your Temboo credentials. Follow the links in this file to establish credentials for each API.
+ 3. Download the [Temboo PHP SDK](https://temboo.com/download) into the `temboo-martha` directory
+ 4. Copy `config.php.template` to `config.php` and edit with your Temboo credentials. Follow the links in this file to establish credentials for each API.
 
 ###Why PHP? Why no framework? You call this a Siri?
 Yeah, okay, I don't expect Siri will be fearing for her job any time soon. There's really not much to this but Temboo calls and some hairy regular expressions. But that's the point! Martha is here to show off the awesome power of Temboo (which definitely exists), not my Natural Language Processing expertise (which definitely does not). That said, if you happen to be a bored NLP domain expert, pull requests welcome!
+
+Bare bones PHP because a good demo shouldn't involve much in the way of installation or deployment. Just upload Martha to any old web host. The majority of "setup" will just be the time it takes you to sign up for developer accounts with all those APIs.
 
 ###About Temboo
 Temboo lets developers focus on what makes their software unique.
