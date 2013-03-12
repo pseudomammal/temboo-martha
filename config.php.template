@@ -1,0 +1,138 @@
+<?php
+
+/**
+ * Martha
+ *
+ * An artificially intelligent-ish personal assistant built on the
+ * Temboo API library.
+ *
+ * PHP version 5
+ *
+ * LICENSE: Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ * @author     Nick Blanchard-Wright <nick.wright@temboo.com>
+ * @copyright  2013 Temboo, Inc.
+ * @license    http://www.apache.org/licenses/LICENSE-2.0 Apache License 2.0
+ * @link       http://www.temboo.com
+ * @package    Martha
+ * @subpackage Config
+ */
+
+
+/**
+ * Your Temboo account name. If you don't have an account, sign up at:
+ * https://temboo.com/signup
+ */
+define('TEMBOO_ACCOUNT', 'IForgotToSignUp');
+
+
+/**
+ * Your Temboo Application name. You can get this from https://live.temboo.com/account/
+ */
+define('TEMBOO_APP_NAME', 'myFirstApp');
+
+
+/**
+ * Your Temboo Application key. You can get this from https://live.temboo.com/account/
+ */
+define('TEMBOO_APP_KEY', 'XXXX-XXXX-XXXX-XXXX');
+
+
+/**
+ * The name of your stored Twilio credential on Temboo. You can find/create this
+ * in the "Credentials" sidebar at: https://live.temboo.com/library/Library/Twilio/
+ */
+define('TEMBOO_TWILIO_CREDENTIAL', 'MyTwilioCredentialName');
+
+
+/**
+ * The phone number your Twilio account uses to send/receieve SMS messages.
+ */
+define('TWILIO_SMS_NUMBER', '+15557891234');
+
+
+/**
+ * The phone number your Twilio account uses to send/receieve voice calls.
+ */
+define('TWILIO_VOICE_NUMBER', '+15557891234');
+
+
+/**
+ * Username for Twilio to authenticate to Martha.
+ *
+ * This is NOT your Twilio username. This is a username Twilio provides *to you* when
+ * sending callbacks. You set this in your Twilio app with callback urls like:
+ * https://TWILIO_CALLBACK_USERNAME:TWILIO_CALLBACK_PASSWORD@example.com/martha/query/sms.php
+ */
+define('TWILIO_CALLBACK_USERNAME', 'martha');
+
+
+/**
+ * Password for Twilio to authenticate to Martha.
+ *
+ * This is NOT your Twilio password. This is a password Twilio provides *to you* when
+ * sending callbacks. You set this in your Twilio app with callback urls like:
+ * https://TWILIO_CALLBACK_USERNAME:TWILIO_CALLBACK_PASSWORD@example.com/martha/query/sms.php
+ */
+define('TWILIO_CALLBACK_PASSWORD', 'XXXX-XXXX-XXXX-XXXX');
+
+
+/**
+ * The name of your stored Bitly credential on Temboo. You can find/create this
+ * in the "Credentials" sidebar at: https://live.temboo.com/library/Library/Bitly/Links/
+ */
+define('TEMBOO_BITLY_CREDENTIAL', '');
+
+
+/**
+ * The name of your stored Flickr credential on Temboo. You can find/create this
+ * in the "Credentials" sidebar at: https://live.temboo.com/library/Library/Flickr/Photos/
+ */
+define('TEMBOO_FLICKR_CREDENTIAL', '');
+
+
+/**
+ * The name of your stored Twitter credential on Temboo. You can find/create this
+ * in the "Credentials" sidebar at: https://live.temboo.com/library/Library/Twitter/Search/
+ */
+define('TEMBOO_TWITTER_CREDENTIAL', '');
+
+
+/**
+ * The name of your stored Dropbox credential on Temboo. You can find/create this
+ * in the "Credentials" sidebar at: https://live.temboo.com/library/Library/Dropbox/
+ */
+define('TEMBOO_DROPBOX_CREDENTIAL', '');
+
+
+/**
+ * The name of your stored Amazon S3 credential on Temboo. You can find/create this
+ * in the "Credentials" sidebar at: https://live.temboo.com/library/Library/Amazon/S3/
+ */
+define('TEMBOO_S3_CREDENTIAL', '');
+
+
+/**
+ * The name of the Amazon S3 bucket Martha in which should store files.
+ */
+define('MARTHA_S3_BUCKET', '');
+
+
+/**
+ * Your preferred complete URL for users reaching Martha, for self-links.
+ * E.g. http://example.com/martha/
+ * If left empty, URL will be guessed from $_SERVER environment.
+ */
+define('MARTHA_URL', '');
+
+?>

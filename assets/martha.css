@@ -1,0 +1,134 @@
+/**
+ * Martha
+ *
+ * An artificially intelligent-ish personal assistant built on the
+ * Temboo API library.
+ *
+ * PHP version 5
+ *
+ * LICENSE: Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ * @author     Nick Blanchard-Wright <nick.wright@temboo.com>
+ * @copyright  2013 Temboo, Inc.
+ * @license    http://www.apache.org/licenses/LICENSE-2.0 Apache License 2.0
+ * @link       http://www.temboo.com
+ * @package    Martha
+ * @subpackage Assets
+ */
+
+body {
+	background-color: #222;
+	background-image: url("pinstriped_suit.png"); /* Background by subtlepatterns.com */
+	color: #eee;
+	font-family:"Open Sans", "Trebuchet MS", Arial, sans-serif;
+}
+
+a {
+	text-decoration: none;
+}
+
+#logo {
+	display: block;
+	width: 50px;
+	height: 50px;
+	margin: 10px auto;
+}
+
+.hal {
+	background-color: #ddd;
+	color: #333;
+	border: 4px solid #ccc;
+	border-radius: 10px;
+	padding: 10px;
+	padding-bottom: 50px;
+	position: relative;
+	margin: auto;
+	width: 90%;
+	max-width: 300px;
+	min-height: 210px;
+}
+
+.query {
+	font-style: italic;
+	font-size: 18px;
+	font-weight: bold;
+	color: #111;
+	margin: 10px;
+	word-wrap: break-word;
+}
+
+.query:before {
+	content: open-quote;
+}
+
+.query:after {
+	content: close-quote;
+}
+
+.message {
+	margin: 10px;
+	white-space: pre-wrap;
+	word-wrap: break-word;
+}
+
+input[type=text] {
+	display: block;
+	position: absolute;
+	left: 10px;
+	right: 10px;
+	bottom: 10px;
+	font-size: 18px;
+	border: 1px solid #222;
+}
+
+input[type=submit] {
+	background-color: transparent;
+	background-image: url("temboo-drop-orange.png");
+	width: 50px;
+	height: 50px;
+	border: none;
+	display: block;
+	margin: 10px auto;
+}
+
+input[type=submit]:active, input[type=submit]:disabled {
+	background-image: url("temboo-drop-blue.png");
+	opacity: 1.0;
+}
+
+body:after
+{
+	content: url("temboo-drop-blue.png");
+	display: none;
+}
+
+@media (min--moz-device-pixel-ratio: 1.5),
+	(-o-min-device-pixel-ratio: 3/2),
+	(-webkit-min-device-pixel-ratio: 1.5),
+	(min-device-pixel-ratio: 1.5),
+	(min-resolution: 1.5dppx) {
+	body {
+		background-image: url("pinstriped_suit_@2X.png"); /* Background by subtlepatterns.com */
+		background-size: 400px 333px;
+	}
+	.hal {
+		min-height: 300px;
+	}
+	input[type=submit] {
+		background-image: url("temboo-drop-orange_@2X.png");
+		background-size: 50px 50px;
+	}
+	input[type=submit]:active, input[type=submit]:disabled {
+		background-image: url("temboo-drop-blue_@2X.png");
+	}
+}
