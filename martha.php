@@ -82,8 +82,8 @@ class Martha {
      * @return Martha new Martha instance
      */
     public function __construct() {
-    	// Instantiate Temboo session...
-    	$this->_tembooSession = new Temboo_Session(TEMBOO_ACCOUNT, TEMBOO_APP_NAME, TEMBOO_APP_KEY);
+        // Instantiate Temboo session...
+        $this->_tembooSession = new Temboo_Session(TEMBOO_ACCOUNT, TEMBOO_APP_NAME, TEMBOO_APP_KEY);
     }
 
 
@@ -99,7 +99,7 @@ class Martha {
      * @throws Temboo_Exception should unforseen misfortunes befall us
      */
     protected function searchImages($subject, $limit = false) {
-		// Instantiate the Choreo, using a previously instantiated Temboo_Session object
+        // Instantiate the Choreo, using a previously instantiated Temboo_Session object
         $search = new Flickr_Photos_Search($this->_tembooSession);
 
         // Get an input object for the Choreo
@@ -117,10 +117,10 @@ class Martha {
         // Execute Choreo and get results
         $searchResults = $search->execute($searchInputs)->getResults();
 
-		$response = json_decode($searchResults->getResponse());
+        $response = json_decode($searchResults->getResponse());
 
         // Render the list
-		return $this->renderListResults(__FUNCTION__, $subject, $response->photos->photo);
+        return $this->renderListResults(__FUNCTION__, $subject, $response->photos->photo);
     }
 
 
@@ -208,55 +208,55 @@ class Martha {
      * @return string public url for file, or false if upload failed
      */
     protected function shareFile($filename, $contents) {
-    	if(defined('TEMBOO_DROPBOX_CREDENTIAL') && TEMBOO_DROPBOX_CREDENTIAL) {
-	    	try {
-				// Instantiate the Choreo, using a previously instantiated Temboo_Session object
-				$uploadFile = new Dropbox_UploadFile($this->_tembooSession);
+        if(defined('TEMBOO_DROPBOX_CREDENTIAL') && TEMBOO_DROPBOX_CREDENTIAL) {
+            try {
+                // Instantiate the Choreo, using a previously instantiated Temboo_Session object
+                $uploadFile = new Dropbox_UploadFile($this->_tembooSession);
 
-				// Get an input object for the Choreo
-				$uploadFileInputs = $uploadFile->newInputs();
+                // Get an input object for the Choreo
+                $uploadFileInputs = $uploadFile->newInputs();
 
-				// Set credential to use for execution
-				$uploadFileInputs->setCredential(TEMBOO_DROPBOX_CREDENTIAL);
+                // Set credential to use for execution
+                $uploadFileInputs->setCredential(TEMBOO_DROPBOX_CREDENTIAL);
 
-				// Set inputs
-				$uploadFileInputs->setFileName($filename)->setFileContents(base64_encode($contents))->setResponseFormat('json');
+                // Set inputs
+                $uploadFileInputs->setFileName($filename)->setFileContents(base64_encode($contents))->setResponseFormat('json');
 
-				// Execute Choreo and get results
-				$uploadFileResults = $uploadFile->execute($uploadFileInputs);
+                // Execute Choreo and get results
+                $uploadFileResults = $uploadFile->execute($uploadFileInputs);
 
 
-				// Instantiate the Choreo, using a previously instantiated Temboo_Session object
-				$getShareableLink = new Dropbox_GetShareableLink($this->_tembooSession);
+                // Instantiate the Choreo, using a previously instantiated Temboo_Session object
+                $getShareableLink = new Dropbox_GetShareableLink($this->_tembooSession);
 
-				// Get an input object for the Choreo
-				$getShareableLinkInputs = $getShareableLink->newInputs();
+                // Get an input object for the Choreo
+                $getShareableLinkInputs = $getShareableLink->newInputs();
 
-				// Set credential to use for execution
-				$getShareableLinkInputs->setCredential(TEMBOO_DROPBOX_CREDENTIAL);
+                // Set credential to use for execution
+                $getShareableLinkInputs->setCredential(TEMBOO_DROPBOX_CREDENTIAL);
 
-				// Set inputs
-				$getShareableLinkInputs->setPath($filename)->setResponseFormat('json');
+                // Set inputs
+                $getShareableLinkInputs->setPath($filename)->setResponseFormat('json');
 
-				// Execute Choreo and get results
-				$getShareableLinkResults = $getShareableLink->execute($getShareableLinkInputs)->getResults();
+                // Execute Choreo and get results
+                $getShareableLinkResults = $getShareableLink->execute($getShareableLinkInputs)->getResults();
 
-				$response = json_decode($getShareableLinkResults->getResponse());
+                $response = json_decode($getShareableLinkResults->getResponse());
 
-				if(isset($response->url)) {
-					return str_replace('www.dropbox.com', 'dl.dropbox.com', $response->url);
-				}
+                if(isset($response->url)) {
+                    return str_replace('www.dropbox.com', 'dl.dropbox.com', $response->url);
+                }
 
-			} catch(Temboo_Exception $e) {
+            } catch(Temboo_Exception $e) {
                 error_log(__METHOD__ . ' failed with ' . get_class($e) . ': ' . $e->getMessage());
-				// Do nothing, try again with S3 below.
-			}
-		}
+                // Do nothing, try again with S3 below.
+            }
+        }
 
         // Dropbox was unavailable or failed. Try S3...
 
-		if(defined('TEMBOO_S3_CREDENTIAL') && TEMBOO_S3_CREDENTIAL && defined('MARTHA_S3_BUCKET') && MARTHA_S3_BUCKET) {
-			try {
+        if(defined('TEMBOO_S3_CREDENTIAL') && TEMBOO_S3_CREDENTIAL && defined('MARTHA_S3_BUCKET') && MARTHA_S3_BUCKET) {
+            try {
                 // Instantiate the Choreo, using a previously instantiated Temboo_Session object
                 $putObject = new Amazon_S3_PutObject($this->_tembooSession);
 
@@ -283,13 +283,13 @@ class Martha {
                 }
                 return $url . '?answer=' . urlencode($filename);
 
-			} catch(Temboo_Exception $e) {
+            } catch(Temboo_Exception $e) {
                 error_log(__METHOD__ . ' failed with ' . get_class($e) . ': ' . $e->getMessage());
-				// Do nothing, return false below.
-			}
-		}
+                // Do nothing, return false below.
+            }
+        }
 
-		return false;
+        return false;
     }
 
 
@@ -341,32 +341,32 @@ class Martha {
      * @return string a short url, or the original if shortening failed
      */
     public function shortenUrl($url) {
-    	if(defined('TEMBOO_BITLY_CREDENTIAL') && TEMBOO_BITLY_CREDENTIAL) {
-    		try{
-				// Instantiate the Choreo, using a previously instantiated Temboo_Session object
-				$shortenURL = new Bitly_Links_ShortenURL($this->_tembooSession);
+        if(defined('TEMBOO_BITLY_CREDENTIAL') && TEMBOO_BITLY_CREDENTIAL) {
+            try{
+                // Instantiate the Choreo, using a previously instantiated Temboo_Session object
+                $shortenURL = new Bitly_Links_ShortenURL($this->_tembooSession);
 
-				// Get an input object for the Choreo
-				$shortenURLInputs = $shortenURL->newInputs();
+                // Get an input object for the Choreo
+                $shortenURLInputs = $shortenURL->newInputs();
 
-				// Set credential to use for execution
-				$shortenURLInputs->setCredential(TEMBOO_BITLY_CREDENTIAL)->setResponseFormat('txt');
+                // Set credential to use for execution
+                $shortenURLInputs->setCredential(TEMBOO_BITLY_CREDENTIAL)->setResponseFormat('txt');
 
-				// Set inputs
-				$shortenURLInputs->setLongURL($url);
+                // Set inputs
+                $shortenURLInputs->setLongURL($url);
 
-				// Execute Choreo and get results
-				$shortenURLResults = $shortenURL->execute($shortenURLInputs)->getResults();
+                // Execute Choreo and get results
+                $shortenURLResults = $shortenURL->execute($shortenURLInputs)->getResults();
 
-				return $shortenURLResults->getResponse();
+                return $shortenURLResults->getResponse();
 
-			} catch(Temboo_Exception $e) {
+            } catch(Temboo_Exception $e) {
                 error_log(__METHOD__ . ' failed with ' . get_class($e) . ': ' . $e->getMessage());
-				// Do nothing. Return original url below.
-			}
-    	}
+                // Do nothing. Return original url below.
+            }
+        }
 
-    	return $url;
+        return $url;
     }
 
     /**
@@ -380,20 +380,20 @@ class Martha {
      * @throws Temboo_Exception should unforseen misfortunes befall us
      */
     public function sendSMS($to, $message) {
-		// Instantiate the Choreo, using a previously instantiated Temboo_Session object
-		$sendSMS = new Twilio_SendSMS($this->_tembooSession);
+        // Instantiate the Choreo, using a previously instantiated Temboo_Session object
+        $sendSMS = new Twilio_SendSMS($this->_tembooSession);
 
-		// Get an input object for the Choreo
-		$sendSMSInputs = $sendSMS->newInputs();
+        // Get an input object for the Choreo
+        $sendSMSInputs = $sendSMS->newInputs();
 
-		// Set credential to use for execution
-		$sendSMSInputs->setCredential(TEMBOO_TWILIO_CREDENTIAL);
+        // Set credential to use for execution
+        $sendSMSInputs->setCredential(TEMBOO_TWILIO_CREDENTIAL);
 
-		// Set inputs
-		$sendSMSInputs->setBody($message)->setTo($to)->setFrom(TWILIO_SMS_NUMBER);
+        // Set inputs
+        $sendSMSInputs->setBody($message)->setTo($to)->setFrom(TWILIO_SMS_NUMBER);
 
-		// Execute Choreo, discard results
-		$sendSMS->execute($sendSMSInputs);
+        // Execute Choreo, discard results
+        $sendSMS->execute($sendSMSInputs);
     }
 
 
@@ -443,7 +443,7 @@ class Martha {
      * @param string $message the next message
      */
     public function say($message) {
-    	$this->_messages[] = $message;
+        $this->_messages[] = $message;
     }
 
 
@@ -453,7 +453,7 @@ class Martha {
      * @return array messages to the user
      */
     public function messages() {
-    	return $this->_messages;
+        return $this->_messages;
     }
 
 
@@ -495,8 +495,8 @@ class Martha {
 
 
         // If nothing survived all that, just say hello.
-    	if(strlen($query) < 1) {
-    		return $this->say($this->greet());
+        if(strlen($query) < 1) {
+            return $this->say($this->greet());
         }
 
         // Check for a request to limit the number of results.
@@ -559,7 +559,7 @@ class Martha {
         }
 
         // Give up!
-    	$this->say($this->sorryDave());
+        $this->say($this->sorryDave());
     }
 
 
