@@ -727,7 +727,7 @@ class Martha {
         $this->say('"' . implode(' ', array($search2, $number2, $thing2, $type2)) . '."');
 
         $this->say("I can talk to all of these APIs thanks to Temboo! https://temboo.com");
-        $this->say("You can read my source at https://github.com/temboo");
+        $this->say("You can read my source at https://github.com/pseudomammal/temboo-martha");
     }
 
 

@@ -38,14 +38,14 @@
 		<script>
 			$(function(){
 				$('a').replaceWith(function(){
-					return $(this).attr('href').replace(/.*\?v=([^&]+).*/g, '<iframe width="420" height="345" src="http://www.youtube.com/embed/$1" frameborder="0" allowfullscreen></iframe>');
+					return '<iframe width="420" height="345" src="' + $(this).attr('href').replace('/v/', '/embed/') + '" frameborder="0" allowfullscreen></iframe>';
 				});
 			});
 		</script>
 	</head>
 	<body>
 		<?php foreach($items as $video): ?>
-				<a href="<?php echo htmlentities($video->link[0]->href, ENT_COMPAT, 'UTF-8'); ?>"><?php echo htmlentities($video->link[0]->href, ENT_NOQUOTES, 'UTF-8'); ?></a>
+				<a href="<?php echo htmlentities($video->content->src, ENT_COMPAT, 'UTF-8'); ?>"><?php echo htmlentities($video->content->src, ENT_NOQUOTES, 'UTF-8'); ?></a>
 		<?php endforeach; ?>
 	</body>
 </html>
