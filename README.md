@@ -1,5 +1,5 @@
 ###About Martha
-[@edd](https://twitter.com/edd) challenged @temboo to ["write an open source Siri implementation"](https://twitter.com/edd/status/297183175472476160).
+[@edd](https://twitter.com/edd) challenged [@temboo](https://github.com/temboo) to "[write an open source Siri implementation](https://twitter.com/edd/status/297183175472476160)".
 
 Well, meet Martha! Using Temboo's [vast API library](https://live.temboo.com/library/) she can:
 
