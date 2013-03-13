@@ -32,7 +32,7 @@
 /**
  * Configuration -- edit this with your Temboo and API credentials.
  *
- * See files for URLs to get new credentials.
+ * See file for URLs to get new credentials.
  */
 require_once('config.php');
 
@@ -425,7 +425,7 @@ class Martha {
         $html = ob_get_clean();
 
         // Upload to Dropbox or S3
-        $filename = uniqid('martha-'.$type.'s-', true) . '.html';
+        $filename = uniqid('martha-'.$type.'-', true) . '.html';
         $url = $this->shareFile($filename, $html);
 
         // If a page was successfully uploaded, link to it for full results (and shorter text messages!)
