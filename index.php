@@ -51,8 +51,8 @@ if(isset($_GET['answer'])) {
 
 // Process queries submitted via vanilla web form.
 $query = '';
-if(isset($_POST['query'])) {
-	$query = (string) $_POST['query'];
+if(isset($_REQUEST['query'])) {
+	$query = (string) $_REQUEST['query'];
 	if(get_magic_quotes_gpc()) {
 		$query = stripslashes($query);
 	}

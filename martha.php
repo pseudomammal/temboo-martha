@@ -561,6 +561,7 @@ class Martha {
 
         // Give up!
         $this->say($this->sorryDave());
+        $this->say('Try asking "what can you do for me?" or "Martha help"');
     }
 
 
@@ -665,8 +666,7 @@ class Martha {
             "I'm sorry, Dave. I can do that, but I just don't want to.",
             'Yeah, sorry. No.',
             'Nope. Better luck next time!',
-            'Huh?',
-            'Try asking for "help" or "what can you do?"'
+            'Huh?'
         );
     }
 

@@ -47,6 +47,7 @@
 	<body>
 		<form id="martha-form" action="" data-action="query/ajax.php" method="POST">
 			<div class="hal">
+				<a id="help" href="?query=help">?</a>
 				<div id="martha-dialog">
 					<?php if(isset($query) && strlen($query) > 0): ?>
 						<div class="query"><?php echo htmlentities($query, ENT_NOQUOTES, 'UTF-8'); ?></div>
@@ -56,6 +57,7 @@
 					<?php endforeach; ?>
 				</div>
 				<input type="text" name="query" id="martha-query" autocomplete="off" />
+				<p id="credits"><a href="https://temboo.com/" target="_blank">Powered by Temboo</a></p>
 			</div>
 			<input type="submit" value="" disabled="disabled" />
 		</form>

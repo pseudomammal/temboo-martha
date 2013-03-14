@@ -62,11 +62,28 @@ $(function(){
 		}, 'json');
 	});
 
+	dialog.on('click', 'a.help', function(e){
+		e.preventDefault();
+		var oldVal = input.val();
+		input.val($(this).text());
+		form.submit();
+		input.val(oldVal);
+	});
+
+	$('#help').click(function(e){
+		e.preventDefault();
+		var oldVal = input.val();
+		input.val("help!");
+		form.submit();
+		input.val(oldVal);
+	});
+
 	function linkify(linkContainer) {
 		linkContainer = $(linkContainer);
 		var newHtml = linkContainer.html();
 		newHtml = newHtml.replace(/(http:\/\/bit.ly\/\w+|https:\/\/github.com\/temboo|https:\/\/github.com\/pseudomammal\/temboo-martha|https:\/\/temboo.com)/g, '<a href="$1" target="_blank">$1</a>');
 		newHtml = newHtml.replace(/(^|\s+)@(\w+)/g, '$1<a href="http://twitter.com/$2" target="_blank">@$2</a>');
+		newHtml = newHtml.replace(/"(what can you do for me\?|Martha help)"/g, '"<a class="help" href="?query=help">$1</a>"');
 		linkContainer.html(newHtml);
 		return linkContainer;
 	}
