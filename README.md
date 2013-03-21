@@ -6,7 +6,6 @@ Well, meet Martha! Using Temboo's [vast API library](https://live.temboo.com/lib
  * Take your requests via web, SMS, or voice with [Twilio](https://live.temboo.com/library/Library/Twilio/)
  * Find photos on [Flickr](https://live.temboo.com/library/Library/Flickr/)
  * Search for videos on [YouTube](https://live.temboo.com/library/Library/YouTube/)
- * Check statuses on [Twitter](https://live.temboo.com/library/Library/Twitter/)
  * Upload the results of her searches to [Dropbox](https://live.temboo.com/library/Library/Dropbox/) or [S3](https://live.temboo.com/library/Library/Amazon/S3/)
  * Shorten those URLs with [Bitly](https://live.temboo.com/library/Library/Bitly/), the better to txt them back to you with [Twilio](https://live.temboo.com/library/Library/Twilio/)
 
